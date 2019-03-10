@@ -1,0 +1,96 @@
+<%include pub/head.html%>
+  </head>
+  <body>
+  	<%include pub/left-nav.html%>
+  	<div class="xu-main-bar">
+  		<%include pub/usernav.html%>
+  		<div class="xu-main-body">
+  			<h3>我的学生</h3>
+  			<div class="control-xu-bar row">
+					<div class="dropdown student-select">
+					  <button class="btn btn-default dropdown-toggle" type="button" id="classname" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					  	<%if(classinfo){%>
+					  	  <input type="hidden" id="classupId" value="<%- classinfo._id %>">
+					  		<span id="checked-classname"><%- classinfo.classname %></span>
+					  	<%}%>
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="classname" id="classname-item">
+							<li><a href="/school/student/all">全部学生</a></li>
+							<%for(let i = 0;i < classlist.length; i++){%>
+							<li><a href="/school/student?classid=<%- classlist[i]._id %>"><%= classlist[i].classname %></a></li>
+							<%}%>
+						</ul>
+					</div>
+					<button class="xu-btn xu-btn-blue r-f" id="output-stumsg">导出该班学生信息</button>
+					<div class="search-bar">
+						<input type="text" placeholder="搜索学生姓名" id="search-stu-input">
+						<button type="button" class="xu-btn" id="search-stu-btn"><i class="icon iconfont icon-sousuo"></i></button>
+					</div>
+				</div>
+  			<div class="main-panel">
+  				<div class="xu-btn-bar">
+  					<button class="xu-btn xu-btn-primary" data-toggle="modal" data-target="#newClassStudent">+ 添加学生</button>
+  					<span class="r-f totle-std">共<%= stulist.length%>名学生</span>
+  				</div>
+  				<div class="xu-table">
+	  				<table>
+						  <thead>
+								<tr class="head">
+									<th>序号</th>
+									<th>帐号</th>
+									<th>昵称</th>
+									<th>备注信息</th>
+									<th>操作</th>
+						    </tr>
+						  </thead>
+							<tbody>
+								<%for(let i = 0; i < stulist.length; i++){%>
+								<tr>
+									<td class="order"><%= i+1 %></td>
+									<td><%= stulist[i].username %></td>
+									<td><%= stulist[i].nickname %></td>
+									<td><%= stulist[i].remark %></td>
+						      <td class="opt" uid="<%- stulist[i]._id %>">
+						      	<span class="editstu">备注</span>
+										<i class="split">|</i>
+										<span class="resetstupwd">重置密码</span>
+										<i class="split">|</i>
+										<span class="removestu">移出班级</span>
+										<i class="split">|</i>
+										<span class="deletestu-class">删除账号</span>
+									</td>
+								</tr>
+								<%}%>
+						  </tbody>
+						</table>
+						<%if(!stulist || stulist.length == 0){%>
+							<div class="notable"><i class="icon iconfont icon-Null-data"></i> 您还没有添加学生</div>
+						<%}%>
+					</div>
+  			</div>
+  		</div>
+  	</div>
+  	<!-- 备注信息 Modal -->
+		<div class="modal fade classmodal modal-small" id="pubstuModal" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title"></h4>
+		      </div>
+		      <div class="modal-body">
+		      	<input type="hidden" id="def-control">
+		      	<input type="hidden" id="getstuId">
+		        <textarea class="form-control modal-form-control" rows="3" id="stutextarea"></textarea>
+		      </div>
+		      <div class="modal-footer">
+		      	<button type="button" id="control-stu-btn" class="xu-btn xu-btn-blue" >确 认</button>
+					  <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+  	<%include pub/foot.html%>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<%include pub/head.html%>
+</head>
+<style type="text/css">
+@keyframes line-scale {
+  0% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); }
+
+  50% {
+    -webkit-transform: scaley(0.4);
+            transform: scaley(0.4); }
+
+  100% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); } }
+
+.line-scale > div:nth-child(1) {
+  -webkit-animation: line-scale 1s 0.1s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.1s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div:nth-child(2) {
+  -webkit-animation: line-scale 1s 0.2s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.2s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div:nth-child(3) {
+  -webkit-animation: line-scale 1s 0.3s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.3s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div:nth-child(4) {
+  -webkit-animation: line-scale 1s 0.4s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.4s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div:nth-child(5) {
+  -webkit-animation: line-scale 1s 0.5s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.5s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div {
+  background-color: #00bcd4;
+  width: 4px;
+  height: 35px;
+  border-radius: 2px;
+  margin: 2px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  display: inline-block; }
+.loader-inner{
+	margin: auto;
+    width: 60px;
+    margin-top: 150px;
+}
+.loader-text{
+	text-align: center;
+	margin-top: 6px;
+}
+</style>
+  <body>
+  	<header>
+  		<nav class="xu-nav-bar">
+  			<div class="nav-logo">
+  				<a href="/" class="logo-a"><img src="/img/logo.png"></a>
+  			</div>
+  		</nav>
+  	</header>
+	  <div class="h5-main-panel">
+	    <div class="row">
+	    	<%if(works){%>
+	    	<input type="hidden" value="<%- works._id%>" id="works_id" />
+				<div class="wroks-content-panel no-pb">
+					<div class="works-dis-panel row">
+						<div class="h5-w-dis">
+							<div class="loader-scratch">
+				        <p class="loader-text" style="font-size: 14px;margin-top: 20px;">正在加载，请稍等...</p>
+							</div>
+							<div class="w-dis-vm" id="scratch-player"></div>
+						</div>
+						<div class="panel-container f-cb">
+							<div class="sxzu-bar">
+								<div class="key left arrow-left" id="mleftBtn"></div> 
+								<div class="key down arrow-down" id="mdownBtn"></div> 
+								<div class="key right arrow-right" id="mrightBtn"></div> 
+								<div class="key up arrow-up" id="mupBtn"></div>
+							</div> 
+							<div class="space f-fr" id="mspaceBtn"></div>
+						</div>
+						<div class="h5-w-dis-msg">
+							<div class="w-cot-msg">
+								<h4 class="title">操作说明</h4>
+								<%if(works.explain){%>
+									<p><%- works.explain%></p>
+								<%}else{%>
+									<p>暂无操作说明</p>
+								<%}%>
+							</div>
+						</div>
+					</div>
+				</div>
+				<%}%>
+		  </div>
+		</div>
+    <%include pub/foot.html%>
+    <%include pub/script.html%>
+    <script type="text/javascript">
+    	var worksplayId = '<%- works.worksid %>';
+	    var files_msg = []
+    </script>
+    <script type="text/javascript" src="https://kaischool-1256948282.cos.ap-chengdu.myqcloud.com/h5lib.min.js"></script>
+    <script type="text/javascript">
+    	window.onload = function(){
+    		$('.loader-scratch').hide()
+    	}
+    </script>
+    <script type="text/javascript" src="/scratches/h5player/compatibility.js"></script>
+  </body>
+</html>

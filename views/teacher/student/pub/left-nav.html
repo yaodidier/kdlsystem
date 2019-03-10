@@ -1,0 +1,31 @@
+<div class="xu-sidebar bg2">
+	<div class="xu-sb-head">
+		<img src="/school/img/logo.png">
+	</div>
+	<div class="xu-sb-teacherInfo">
+		<p class="school-name">学生工作台</p>
+		<div>身&nbsp;&nbsp;&nbsp;&nbsp;份：学生</div>
+		<div class="row">加入新班级<i class="icon iconfont icon-jiahao2fill" title="加入新班级" data-toggle="modal" data-target="#joinClass"></i></div>
+		<div class="myclassbar">
+		<%if(locals.user.classlist.length == 0){%>
+		<p>当前还未加入任何班级</p>
+		<%}%>
+		</div>
+	</div>
+	<ul class="xu-sb-ul">
+		<%if(active == 'index' || active == 'noclass'){%>
+		<li class="active">
+		<%}else{%>
+		<li>
+		<%}%>
+			<a href="/school"><i class="icon iconfont icon-pengyou"></i>进行中作业</a>
+		</li>
+		<%if(active == 'tasken' || active == 'noclass'){%>
+		<li class="active">
+		<%}else{%>
+		<li>
+		<%}%>
+			<a href="/school/stutask/end"><i class="icon iconfont icon-yonghu"></i>已结束作业</a>
+		</li>
+	</ul>
+</div>

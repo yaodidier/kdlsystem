@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  	<meta charset="utf-8">
+	<title><%- title%></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index">
+	<!-- Loading Bootstrap UI -->
+  <link rel='stylesheet' href='/css/scratch.css' />
+  </head>
+  <body>
+  	<%if(locals.user){%>
+  	<input type="hidden" id="scratch_user_id" value="<%- locals.user._id%>">
+  	<script type="text/javascript">
+  		var user_headimg = '<%- locals.user.headimg%>';
+  	</script>
+  	<%}else{%>
+  	<input type="hidden" id="scratch_user_id">
+  	<%}%>
+  	<script type="text/javascript">
+  	<%if(worksdata.length > 0){%>
+  		var files_msg = <%- worksdata%>;
+  	<%}else{%>
+  		var files_msg = []
+  	<%}%>
+  	</script>
+      <script type="text/javascript" src="https://kaischool-1256948282.cos.ap-chengdu.myqcloud.com/lib.min.js"></script>
+      <script type="text/javascript" src="/scratches/creater/gui.js"></script>
+    <%include pub/script.html%>
+	</body>
+</html>

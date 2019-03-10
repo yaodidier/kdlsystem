@@ -1,0 +1,16 @@
+# Mac OS
+.DS_Store
+
+# NPM
+/node_modules
+npm-*
+
+
+# Build
+/build
+/dist
+/.opt-in
+/puclic/static
+/public/unreleased
+/public/released
+/public/img/videocover

@@ -1,0 +1,34 @@
+<div class="xu-sidebar">
+	<div class="xu-sb-head">
+		<img src="/school/img/logo.png">
+	</div>
+	<div class="xu-sb-teacherInfo">
+		<div>类&nbsp;&nbsp;&nbsp;&nbsp;型：教师工作台</div>
+		<div>身&nbsp;&nbsp;&nbsp;&nbsp;份：教师</div>
+	</div>
+	<ul class="xu-sb-ul">
+		<%if(active == 'index'){%>
+		<li class="active">
+		<%}else{%>
+		<li>
+		<%}%>
+			<a href="/school"><i class="icon iconfont icon-pengyou"></i>班级管理</a>
+		</li>
+
+		<%if(active == 'student'){%>
+		<li class="active">
+		<%}else{%>
+		<li>
+		<%}%>
+			<a href="/school/student/all"><i class="icon iconfont icon-yonghu"></i>我的学生</a>
+		</li>
+		
+		<%if(active == 'task'){%>
+		<li class="active">
+		<%}else{%>
+		<li>
+		<%}%>
+			<a href="/school/task"><i class="icon iconfont icon-dingdan"></i>作业管理</a>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,53 @@
+<%include pub/admin_head.html%>
+    </head>
+    <body>
+        <!-- Page Container -->
+        <div class="page-container">
+            <%include pub/admin_nav.html%>
+            <!-- Page Content -->
+            <div class="page-content">
+                <div class="page-inner">
+                	<div class="page-title">
+                        <h3 class="breadcrumb-header">所有学生列表</h3>
+                    </div>
+                    <div id="main-wrapper">
+                        <div class="col-md-12">
+                            <table class="table" style="margin-top: 10px;">
+                                <thead>
+                                    <tr>
+                                    	<th>序号</th>
+                                        <th>帐号</th>
+										<th>所在班级</th>
+										<th>账号昵称</th>
+										<th>备注信息</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   <%for(let i = 0; i < stulist.length; i++){%>
+								<tr>
+									<td class="order"><%= i+1 %></td>
+									<td><%= stulist[i].username %></td>
+									<td class="tab_classlist">
+                                        <% var klass = stulist[i].classlist; for(let ii=0; ii < klass.length; ii++){ %>
+                                            <%if(klass[ii].klassid){%>
+                                            <span class="spanclass" cid="<%= klass[ii].klassid._id %>"><%= klass[ii].klassid.classname %></span>
+                                            <%}else{%>
+                                            <span class="spanclass">暂无班级</span>
+                                            <%}%>
+                                        <%}%>   
+                                    </td>
+									<td><%= stulist[i].nickname %></td>
+									<td><%= stulist[i].remark %></td>
+								</tr>
+								<%}%>	
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascripts -->
+        <%include pub/admin_foot.html%>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<%include pub/head.html%>
+  </head>
+  <body>
+  	<%include pub/left-nav.html%>
+  	<div class="xu-main-bar">
+  		<%include pub/usernav.html%>
+  		<div class="xu-main-body">
+  			<input type="hidden" id="classupId" />
+  			<h3>班级管理</h3>
+  			<div class="main-panel">
+  				<div class="xu-btn-bar">
+  					<button class="xu-btn xu-btn-primary" data-toggle="modal" data-target="#newClass">+ 创建班级</button>
+  				</div>
+  				<div class="xu-table">
+	  				<table>
+						  <thead>
+						    <tr class="head">
+						      <th>序号</th>
+						      <th>班级名称</th>
+						      <th>班级码</th>
+						      <th>创建时间</th>
+						      <th>班级人数</th>
+						      <th>操作</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  	<%for(let i = 0; i < classlist.length; i++){%>
+						    <tr>
+									<td class="order"><%= i+1 %></td>
+									<td class="classname"><%= classlist[i].classname %></td>
+									<td><%= classlist[i].invitecode %></td>
+									<td><%= classlist[i].time %></td>
+									<td><%= classlist[i].total %></td>
+									<td class="opt">
+						        <span class="editclass" data-id="<%- classlist[i]._id %>">编辑</span>
+						        <i class="split">|</i>
+						        <a href="/school/student?classid=<%- classlist[i]._id %>" class="check">查看</a>
+						      </td>
+						    </tr>
+						    <%}%>
+						  </tbody>
+						</table>
+					</div>
+					<%if(!classlist || classlist.length == 0){%>
+						<div class="notable"><i class="icon iconfont icon-Null-data"></i> 您还没有创建班级</div>
+					<%}%>
+  			</div>
+  		</div>
+  	</div>
+  	<!-- Modal -->
+		<div class="modal fade classmodal" id="newClass" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close close-newclass" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">创建班级 <span style="font-size: 14px;color: #888;">(最多只能创建<%- locals.user.classNum%>个班级，每个班级最多<%- locals.user.stuNum%>人)</span></h4>
+		      </div>
+		      <div class="modal-body">
+		        <input type="text" class="form-control modal-form-control" id="new-class-name" placeholder="请创建班级名称">
+		      </div>
+		      <div class="modal-footer">
+		      	<button type="button" id="create-klass-btn" class="xu-btn xu-btn-primary">确 认</button>
+		        <button type="button" class="btn btn-default close-newclass" data-dismiss="modal">取 消</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade classmodal" id="changeClass" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close close-newclass" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">修改班级名称</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<input type="hidden" class="form-control" id="change-class-id">
+		        <input type="text" class="form-control modal-form-control" id="change-class-name">
+		      </div>
+		      <div class="modal-footer">
+		      	<button type="button" id="change-klass-btn" class="xu-btn xu-btn-primary" >确 认</button>
+					  <button type="button" class="btn btn-default close-newclass" data-dismiss="modal">取 消</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+  	<%include pub/foot.html%>
+  </body>
+</html>

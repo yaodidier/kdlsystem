@@ -1,0 +1,113 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+body {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family:"PingFang SC","微软雅黑","Microsoft YaHei",Helvetica,"Helvetica Neue",Tahoma,Arial,sans-serif;
+  font-size: 16px;
+  color: #333;
+  background: #bfe3ef;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-style: normal;
+	min-width: 1200px;
+	overflow-y: hidden;
+}
+h1, h2, h3, p, div, ol, ul, input, button {
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+input::-webkit-input-placeholder {
+  font-size: 14px !important;
+  font-weight: inherit !important;
+}
+.row{
+	margin: 0
+}
+.loginbar{
+	width: 600px;
+	margin: 6% auto;
+	height: 480px;
+	background:#bfe3ef url(../img/index/loginbg.jpg) no-repeat center;
+	background-size: 100% 100%; 
+}
+.login-form{
+	position: relative;
+	padding: 10px 90px;
+	padding-top: 160px;
+}
+.login-item-ul{
+	margin-bottom: 30px;
+}
+.login-item-ul li{
+	float: left;
+	margin-right: 12px;
+	padding: 6px 20px;
+	background: #f1f1f1;
+	border-radius: 3px;
+	cursor: pointer;
+	border:1px solid transparent;
+}
+.login-item-ul li.active,.login-item-ul li.active:hover{
+	background:#ffc107;
+	color: #fff;
+	box-shadow: 2px 2px 3px rgba(0,0,0,.1)
+}
+.login-item-ul li.tch.active,.login-item-ul li.tch.active:hover{
+	background:#2196f3;
+}
+.login-item-ul li:hover{
+	background:#ddd;
+}
+.login-form .form-group{
+	margin-bottom: 24px;
+}
+.dismiss{
+	display: none;
+}
+.login-btn{
+	display: block;
+	width: 350px;
+	margin: 0 auto;
+	background: #ffc107;
+	height: 40px;
+	color: #fff;
+	border-radius: 3px;
+	border: 0;
+	cursor: pointer;
+}
+.login-btn:hover{
+	background: #f9ba00
+}
+.login-btn.tch{
+	background:#2196f3
+}
+.login-btn.tch:hover{
+	background:#1b8ce6
+}
+.show-error-msg{
+	position: absolute;
+	width: 350px;
+	bottom: -35px;
+	font-size: 14px;
+	left: 50%;
+	border-radius: 3px;
+	margin-left: -175px;
+	display: none; 
+	padding: 7px 20px;
+	margin-bottom: 8px;
+	background: rgba(243,105,111,.9);
+	color: #fff;
+}

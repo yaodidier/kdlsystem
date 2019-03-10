@@ -1,0 +1,178 @@
+<%include pub/head.html%>
+</head>
+  <body>
+  	<%include pub/left-nav.html%>
+  	<div class="xu-main-bar">
+  		<%include pub/usernav.html%>
+  		<div class="xu-main-body">
+  			<h3><a href="/school/task">作业管理 / </a>作业详情</h3>
+  			<div class="task-info">
+  				<div class="xu-btn-bar">
+  					<a href="/school/task/edit/<%- taskdata._id %>" class="xu-btn xu-btn-blue">重新编辑</a>
+  				</div>
+  				<div class="all-info-list row">
+  					<div class="col-sm-3">作业名称：<span><%- taskdata.title %></span></div>
+  					<div class="col-sm-3">作业类型：<span>
+  					<%if(taskdata.types == 'type1'){%>
+					  课堂作业
+					  <%}else if(taskdata.types == 'type2'){%>
+					  家庭作业
+					  <%}else{%>
+					  假期作业
+					  <%}%>
+  					</span>
+  					</div>
+  					<div class="col-sm-3">班级：
+	  					<% var klass = taskdata.classlist; for(let ii=0; ii < klass.length; ii++){ %>
+							<span class="spanclass"><%= klass[ii].classid.classname %></span>
+							<%}%>
+						</div>
+  					<br/><br/>
+  					<div class="col-sm-3">发布时间：<span><%- taskdata.time %></span></div>
+  					<div class="timer">
+  						<div class="endtime">截止日期：<span><%- taskdata.endtime %></span></div>
+  					</div>
+  					<div class="task-status">
+  						<%let lastime = new Date(taskdata.endtime).getTime() - new Date().getTime(); if(lastime > 0 ){%>
+				      进行中
+				      <%}else{%>
+				      已结束
+				      <%}%>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="task-info" style="padding-bottom: 100px">
+  				<div class="row">
+  					<ul class="taks-status-nav row">
+	  					<li class="active"><a href="#">学生提交作品</a></li>
+	  					<li><a href="/school/task/detail/stulist/<%- taskdata._id %>?cid=all&stu=all">学生提交状态</a></li>
+	  				</ul>
+	  				<div class="stuwork-select-bar">
+	  					<div class="dropdown student-select" style="margin-right: 15px;">
+								<% if(taskdata.classlist.length > 1){ %>
+							  <button class="btn btn-default dropdown-toggle" type="button" id="classname" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							  		<%if(cid == 'all'){%>
+							  		<span id="checked-classname">全部班级</span>
+							  		<%}else{%>
+							  			<% let classList = taskdata.classlist; for( let i = 0;i < classList.length; i++){ %>
+								  		<%if(classList[i].classid._id == cid){%>
+											<span id="checked-classname"><%- classList[i].classid.classname %></span>
+											<%}%>
+											<%}%>
+										<%}%>
+									<span class="caret"></span>
+								</button>
+								<%}%>
+								<ul class="dropdown-menu" aria-labelledby="classname" id="classname-item">
+									<li><a href="/school/task/detail/works/<%- taskdata._id %>?cid=all&stu=all">全部班级</a></li>
+									<%let classList = taskdata.classlist;for(let i =0;i < classList.length; i++){%>
+									<li><a href="/school/task/detail/works/<%- taskdata._id %>?cid=<%- classList[i].classid._id %>&stu=all"><%- classList[i].classid.classname %></a></li>
+									<%}%>
+								</ul>
+							</div>
+
+							<div class="dropdown student-select">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="classname" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							  	<%if(sid == 'review'){%>
+							  	<span>已评分</span>
+							  	<%}else if(sid == 'unreview'){%>
+							  	<span>未评分</span>
+							  	<%}else{%>
+							  	<span>全部状态</span>
+							  	<%}%>
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="classname" id="classname-item">
+									<%for(let i = 0;i < sidlist.length;i++){%>
+									<li><a href="/school/task/detail/works/<%- taskdata._id %>?cid=<%- cid %>&stu=<%- sidlist[i].type %>"><%= sidlist[i].title %></a></li>
+									<%}%>
+								</ul>
+							</div>
+	  				</div>
+  				</div>
+  				<%if(worklist.length > 0){%>
+	  				<%if(worklist[0].stuid){%>
+						<div class="row">
+							<div class="works-list">
+								<ul>
+									<%for(let i = 0; i < worklist.length; i++){%>
+									<li>
+										<div class="xu-card">
+											<a class="xu-content-img" href="/school/scratch#<%- worklist[i].localsname %>" target="_blank"><img src="/teacher-pro/covers/<%- worklist[i].stuid._id %>/<%- worklist[i].covers%>" width="100%"></a>
+											<div class="xu-list-border">
+		                    <a href="/school/scratch#<%- worklist[i].localsname %>" target="_blank" class="xu-contant-title"><%- worklist[i].title %></a>
+				                <div class="xu-user-panel border-top">
+	                        <img src="<%- worklist[i].stuid.headimg %>" class="xu-user-headimg">
+	                        <span><%- worklist[i].stuid.nickname %></span>
+				                </div>
+				                <p class="submitTime">提交时间：<%- worklist[i].time %></p>
+			                </div>
+			                <div class="getpoint">
+				              	<div class="col-sm-6 dianp-btn" wid="<%- worklist[i]._id %>" username="<%- worklist[i].stuid.nickname %>" workname="<%- worklist[i].title %>">评分</div>
+				              	<a href="/school/scratch#<%- worklist[i].localsname %>" target="_blank" class="col-sm-6 wstatus-btn">查看作业</a>
+											</div>
+									</li>
+									<%}%>
+								</ul>
+							</div>
+						</div>
+						<%}else{%>
+						<div class="notable"><i class="icon iconfont icon-Null-data"></i> 该班级没有学生</div>
+						<%}%>
+					<%}else{%>
+					<div class="notable"><i class="icon iconfont icon-Null-data"></i> 暂无学生提交</div>
+					<%}%>
+  			</div>
+  		</div>
+  	</div>
+  	<!-- Modal -->
+		<div class="modal fade modal-big" id="pingFenModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+		  <div class="modal-dialog" role="document" style="width:660px;">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close close-newclass" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <div class="dropdown close" style="margin-right: 15px;opacity: 1">
+		        	<button type="button" class="close" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon iconfont icon-shezhi"></i></button>
+		        	<div class="dropdown-menu dropdown-menu-right" id="xs-dropdown-bar">
+								<p>学生端成绩展示方式</p>
+								<div class="xs-radio-bar">
+									<label class="radio-inline"><input type="radio" name="djradio" checked="checked" value="0"> 成绩</label>
+									<label class="radio-inline"><input type="radio" name="djradio" value="1"> 等级</label>
+								</div>
+							</div>
+		        </div>
+		        <h4 class="modal-title">作品评分</h4>
+		      </div>
+		      <div class="modal-body row" style="padding-top:0" id="pfbody">
+		      	<input type="hidden" id="pf-wrokid">
+		      	<div class="row mb-10">
+		      		<div class="flist-title">作品:</div>
+		      		<div class="col-sm-10" id="pfmodal-wtitle"></div>
+		      	</div>
+		      	<div class="row mb-10">
+		      		<div class="flist-title">学生:</div>
+		      		<div class="col-sm-10" id="pfmodal-student"></div>
+		      	</div>
+		      	<div class="row mb-10">
+		      		<div class="flist-title" style="line-height: 36px;">得分:</div>
+		      		<div class="col-sm-10"><input type="number" id="defeninput" value="90" min="0" max="100"><span class="flist-span">（请输入0-100的整数）</span></div>
+		      	</div>
+		      	<div class="score-level"></div>
+		      	<div class="row mb-10">
+		      		<div class="flist-title">评语:</div>
+		      		<div class="col-sm-10">
+		      			<div class="mb-10"><span class="pyspan">很好，值得表扬！</span><span class="pyspan">不错，继续加油！</span><span class="pyspan">再接再厉！</span><span class="pyspan">还需要多多练习哦！</span></div>
+		      			<textarea rows="6" class="form-control" id="plnr-text"></textarea>
+		      		</div>
+		      	</div>
+		      </div>
+		      <div class="modal-footer">
+		      	<button type="button" id="pf-workmodal-btn" class="xu-btn xu-btn-primary" >确 认</button>
+					  <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+  	<%include pub/foot.html%>
+  </body>
+</html>

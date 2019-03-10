@@ -1,0 +1,21 @@
+<div class="xu-main-head">
+	<a href="/" class="nav-linker">返回社区</a>
+	<%if(locals.user){%>
+	<input type="hidden" id="user-ske-1" value="<%- locals.user._id%>" />
+	<input type="hidden" id="user-ske-2" value="<%- locals.user.role%>" />
+	<div class="dropdown user-select-btn">
+		<a href="javascript:;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="user-nav-img row">
+			<div class="user-head-icon"><img src="<%- locals.user.headimg%>"></div>
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu pull-right" aria-labelledby="classname">
+			<li class="color-1"><a href="/users/userworks/unreleased">我的项目</a></li>
+			<li class="color-2"><a href="/users/userindex/<%- locals.user._id %>">个人主页</a></li>
+			<li class="color-3"><a href="/users/usercenter">账号设置</a></li>
+			<li class="color-1"><a href="/school">进入校园</a></li>
+			<li role="separator" class="divider"></li>
+			<li class="color-4"><a href="/logout" >退出登录</a></li>
+		</ul>
+	</div>
+	<%}%>
+</div>

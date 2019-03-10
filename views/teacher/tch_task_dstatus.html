@@ -1,0 +1,133 @@
+<%include pub/head.html%>
+</head>
+  <body>
+  	<%include pub/left-nav.html%>
+  	<div class="xu-main-bar">
+  		<%include pub/usernav.html%>
+  		<div class="xu-main-body">
+  			<h3><a href="/school/task">作业管理 / </a>作业详情</h3>
+  			<div class="task-info">
+  				<div class="xu-btn-bar">
+  					<a href="/school/task/edit/<%- taskdata._id %>" class="xu-btn xu-btn-blue">重新编辑</a>
+  				</div>
+  				<div class="all-info-list row">
+  					<div class="col-sm-3">作业名称：<span><%- taskdata.title %></span></div>
+  					<div class="col-sm-3">作业类型：<span>
+  					<%if(taskdata.types == 'type1'){%>
+					  课堂作业
+					  <%}else if(taskdata.types == 'type2'){%>
+					  家庭作业
+					  <%}else{%>
+					  假期作业
+					  <%}%>
+  					</span>
+  					</div>
+  					<div class="col-sm-3">班级：
+	  					<% var klass = taskdata.classlist; for(let ii=0; ii < klass.length; ii++){ %>
+							<span class="spanclass"><%= klass[ii].classid.classname %></span>
+							<%}%>
+						</div>
+  					<br/><br/>
+  					<div class="col-sm-3">发布时间：<span><%- taskdata.time %></span></div>
+  					<div class="timer">
+  						<div class="endtime">截止日期：<span><%- taskdata.endtime %></span></div>
+  					</div>
+  					<div class="task-status">
+  						<%let lastime = new Date(taskdata.endtime).getTime() - new Date().getTime(); if(lastime > 0 ){%>
+				      进行中
+				      <%}else{%>
+				      已结束
+				      <%}%>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="task-info" style="padding-bottom: 100px">
+  				<div class="row">
+  					<ul class="taks-status-nav row">
+	  					<li><a href="/school/task/detail/works/<%- taskdata._id %>?cid=all&stu=all">学生提交作品</a></li>
+	  					<li class="active"><a href="#">学生提交状态</a></li>
+	  				</ul>
+  					<div class="stuwork-select-bar">
+							<div class="dropdown student-select" style="margin-right: 15px;">
+								<% if(taskdata.classlist.length > 1){ %>
+							  <button class="btn btn-default dropdown-toggle" type="button" id="classname" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							  		<%if(cid == 'all'){%>
+							  		<span id="checked-classname">全部班级</span>
+							  		<%}else{%>
+							  			<% let classList = taskdata.classlist; for( let i = 0;i < classList.length; i++){ %>
+								  		<%if(classList[i].classid._id == cid){%>
+											<span id="checked-classname"><%- classList[i].classid.classname %></span>
+											<%}%>
+											<%}%>
+										<%}%>
+									<span class="caret"></span>
+								</button>
+								<%}%>
+								<ul class="dropdown-menu" aria-labelledby="classname" id="classname-item">
+									<li><a href="/school/task/detail/stulist/<%- taskdata._id %>?cid=all&stu=all">全部班级</a></li>
+									<%let classList = taskdata.classlist;for(let i =0;i < classList.length; i++){%>
+									<li><a href="/school/task/detail/stulist/<%- taskdata._id %>?cid=<%- classList[i].classid._id %>&stu=all"><%- classList[i].classid.classname %></a></li>
+									<%}%>
+								</ul>
+							</div>
+
+							<div class="dropdown student-select">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="classname" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							  	<%if(sid == 'upload'){%>
+							  	<span>已提交</span>
+							  	<%}else if(sid == 'unload'){%>
+							  	<span>未提交</span>
+							  	<%}else{%>
+							  	<span>全部状态</span>
+							  	<%}%>
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="classname" id="classname-item">
+									<%for(let i = 0;i < sidlist.length;i++){%>
+									<li><a href="/school/task/detail/stulist/<%- taskdata._id %>?cid=<%- cid %>&stu=<%- sidlist[i].type %>"><%= sidlist[i].title %></a></li>
+									<%}%>
+								</ul>
+							</div>
+						</div>
+  				</div>
+					<div class="row">
+						<%if(stulist.length > 0){%>
+						<div class="xu-table" style="margin-top: 20px">
+		  				<table>
+							  <thead>
+									<tr class="head">
+										<th>序号</th>
+										<th>姓名</th>
+										<th>学生备注</th>
+										<th>作品提交数量</th>
+										<th>学生提交状态</th>
+							    </tr>
+							  </thead>
+							  
+								<tbody>
+									<%for(let i = 0; i < stulist.length; i++){%>
+									<tr>
+										<td><%= i+1 %></td>
+										<td><%= stulist[i].nickname%></td>
+										<td><%= stulist[i].remark%></td>
+										<td><%= stulist[i].taskstatus%> / <%- taskdata.worksNum %></td>
+										<%if(stulist[i].taskstatus == 0){%>
+										<td>未提交</td>
+										<%}else{%>
+										<td style="color: #4caf50">已提交</td>
+										<%}%>
+									</tr>
+									<%}%>
+							  </tbody>
+							</table>
+						</div>
+						<%}else{%>
+						<div class="notable"><i class="icon iconfont icon-Null-data"></i> 暂无数据</div>
+						<%}%>
+					</div>
+  			</div>
+  		</div>
+  	</div>
+  	<%include pub/foot.html%>
+  </body>
+</html>

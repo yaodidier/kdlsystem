@@ -1,0 +1,49 @@
+<%include pub/admin_head.html%>
+    </head>
+    <body>
+        <!-- Page Container -->
+        <div class="page-container">
+            <%include pub/admin_nav.html%>
+            <!-- Page Content -->
+            <div class="page-content">
+                <div class="page-inner">
+                    <div class="page-title">
+                        <h3 class="breadcrumb-header">开设教师账号</h3>
+                    </div>
+                    <div id="main-wrapper">
+                        <div class="col-md-4">
+                            <div class="panel panel-white">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label>创建用户名</label>
+                                        <input type="text" class="form-control" id="teacher-reg-username" placeholder="字母或数字，6位以上">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>可创建班级数</label>
+                                        <input type="number" min="1" class="form-control" id="teacher-reg-classnum" value="10">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>最大班级学生人数</label>
+                                        <input type="number" min="1" class="form-control" id="teacher-reg-stunum" value="35">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>密码</label>
+                                        <input type="password" class="form-control" id="teacher-reg-password" placeholder="字母或数字组合，6位以上">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>确认密码</label>
+                                        <input type="password" class="form-control" id="teacher-same-password" >
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="teacher-reg-btn">确认</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Javascripts -->
+        <%include pub/admin_foot.html%>
+    </body>
+</html>

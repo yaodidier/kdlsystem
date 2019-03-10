@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+	<title><%- title%></title>
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+  	<%if(locals.user){%>
+  	<input type="hidden" id="scratch_user_id" value="<%- locals.user._id%>">
+  	<script type="text/javascript">
+  		var user_headimg = '<%- locals.user.headimg%>';
+  	</script>
+  	<%}else{%>
+  	<input type="hidden" id="scratch_user_id">
+  	<%}%>
+  	<script type="text/javascript">
+  	var files_msg = []
+  	</script>
+    <%if(locals.user.role == 9){%>
+    <script type="text/javascript" src="https://kaischool-1256948282.cos.ap-chengdu.myqcloud.com/school/tch.min.js"></script>
+    <script type="text/javascript" src="/school/scratches/gui.js"></script>
+    <%}else{%>
+    <script type="text/javascript" src="https://kaischool-1256948282.cos.ap-chengdu.myqcloud.com/school/stu.min.js"></script>
+    <script type="text/javascript" src="/school/scratches/student/gui.js"></script>
+    <%}%>
+	</body>
+</html>

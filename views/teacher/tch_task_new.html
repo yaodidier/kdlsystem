@@ -1,0 +1,139 @@
+<%include pub/head.html%>
+<link rel='stylesheet' href='/css/bootstrap-datetimepicker.min.css' />
+  </head>
+  <body>
+  	<%include pub/left-nav.html%>
+  	<div class="xu-main-bar">
+  		<%include pub/usernav.html%>
+  		<div class="xu-main-body">
+  			<h3><a href="/school/task">作业管理 / </a>新建作业</h3>
+  			<div class="main-panel form-horizontal">
+  				<div class="form-group row">
+	  				<label class="col-sm-1 control-label"><span class="red">*</span> 作业类型</label>
+	  					<div class="col-sm-4">
+							<label class="radio-inline">
+							  <input type="radio" name="worktypeOptions" value="type1" checked="checked"> 课堂作业
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="worktypeOptions" value="type2"> 家庭作业
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="worktypeOptions" value="type3"> 假期作业
+							</label>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 control-label"><span class="red">*</span> 标题</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control small modal-form-control" placeholder="请输入作业名称" id="task-title" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 control-label"><span class="red">*</span> 作业内容</label>
+						<div class="col-sm-4">
+							<textarea class="form-control modal-form-control" rows="5" placeholder="请输入作业的要求、规范、注意事项等等" id="task-content"></textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 control-label">作品改编模板</label>
+						<div class="col-sm-8">
+							<span class="form-msg"><span>（选填）</span>添加作品改编模板后，学生可以对作品模板进行改编后提交作品完成任务</span>
+							<div class="form-template-list"></div>
+							<div class="form-template" id="add-works-modal"><div class="content"><p>+添加</p> <p>作品改编模板</p></div></div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 control-label"><span class="red">*</span> 提交作品数量</label>
+						<div class="col-sm-4">
+							<input type="number" class="form-control small" value="1" min="1" step="1" id="task-workNum" style="width: 68px;text-align: center;">&nbsp;&nbsp;个
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 control-label"><span class="red">*</span> 提交截止时间</label>
+						<div class="col-sm-4">
+							<input type="text" id="enddata" class="form-control modal-form-control" style="width: 200px;" placeholder="日期" readonly="readonly">
+							<input type="text" id="endtime" class="form-control modal-form-control" style="width: 100px;" placeholder="时分" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-1 control-label"><span class="red">*</span> 选择任务班级</label>
+						<div class="col-sm-9">
+							<%if(classlist && classlist.length > 0){%>
+							<div class="xu-table">
+								<table>
+								  <thead>
+								    <tr class="head">
+								      <th><input type="checkbox" name="selectall"></th>
+								      <th>序号</th>
+								      <th>班级名称</th>
+								      <th>创建时间</th>
+								      <th>班级人数</th>
+								      <th>操作</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								  	<%for(let i = 0;i < classlist.length; i++){%>
+								    <tr>
+								      <td><input type="checkbox" name="stuCheckBox" cid="<%- classlist[i]._id%>"></td>
+								      <td><%- i+1 %></td>
+								      <td><%- classlist[i].classname%></td>
+								      <td><%- classlist[i].time%></td>
+								      <td><%- classlist[i].total%></td>
+								      <td class="opt">
+								        <a href="/school/student?classid=<%- classlist[i]._id%>" target="_blank" class="check">查看</a>
+								      </td>
+								    </tr>
+								    <%}%>
+								  </tbody>
+								</table>
+							</div>
+							<%}else{%>
+							<p  style="margin-top: 9px;">您还未创建班级，<a href="/" style="color: #2c85f0">前去创建</a></p>
+							<%}%>
+						</div>
+					</div>
+					<div class="form-group">
+				    <div class="col-sm-offset-1 col-sm-10 operation">
+				      <button type="button" class="xu-btn xu-btn-primary" id="release-task">立即发布</button>
+				      <a href="/school/task" class="xu-btn xu-btn-default">取消</a>
+				    </div>
+				  </div>
+  			</div>
+  		</div>
+  	</div>
+  	<!-- Modal -->
+		<div class="modal fade modal-big" id="chooseWorkModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+		  <div class="modal-dialog" role="document" style="width: 730px">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close close-newclass" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">请选择您要添加的作品改编模版</h4>
+		      </div>
+		      <div class="modal-body row" id="work-modal-list"></div>
+		      <div class="modal-footer">
+		      	<button type="button" id="choose-workmodal-btn" class="xu-btn xu-btn-primary" >确 认</button>
+					  <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+  	<%include pub/foot.html%>
+  	<script type="text/javascript" src="/school/laydate/laydate.js"></script>
+  	<script type="text/javascript">
+    laydate.render({
+			elem: '#enddata'
+			,format: 'yyyy-MM-dd'
+			,min: 0
+			,theme: '#393D49'
+			,showBottom: false
+		});
+		laydate.render({
+		  elem: '#endtime'
+		  ,type: 'time'
+		  ,theme: '#393D49'
+		  ,format: 'HH:mm'
+		  ,btns: ['confirm','clear']
+		});
+		</script>
+  </body>
+</html>

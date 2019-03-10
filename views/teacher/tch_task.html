@@ -1,0 +1,92 @@
+<%include pub/head.html%>
+  </head>
+  <body>
+  	<%include pub/left-nav.html%>
+  	<div class="xu-main-bar">
+  		<%include pub/usernav.html%>
+  		<div class="xu-main-body">
+  			<h3>作业管理</h3>
+  			<div class="main-panel">
+  				<div class="xu-btn-bar">
+  					<a href="/school/task/new" class="xu-btn xu-btn-primary">+ 布置作业</a>
+  				</div>
+  				<input type="hidden" value="<%= pagecount%>" id="pagecount">
+          <input type="hidden" value="<%= pageid%>" id="pageid">
+  				<div class="xu-table">
+  					<table>
+						  <thead>
+						    <tr class="head">
+						      <th>序号</th>
+						      <th>作业名称</th>
+						      <th>类型</th>
+						      <th>班级</th>
+						      <th>创建日期</th>
+						      <th>截止日期</th>
+						      <th>完成人数</th>
+						      <th>状态</th>
+						      <th>操作</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  <%if(tasklist.length > 0){%>
+						  	<%for(let i = 0; i < tasklist.length; i++){%>
+						    <tr>
+						      <td><%= i+1 %></td>
+						      <td><%= tasklist[i].title %></td>
+						     	<%let tasktype = tasklist[i].types; if(tasktype == 'type1'){%>
+						     	<td>课堂作业</td>
+						     	<%}else if(tasktype == 'type2'){%>
+						     	<td>家庭作业</td>
+						      <%}else{%>
+						      <td>假期作业</td>
+						      <%}%>
+						      <td>
+						      	<% var klass = tasklist[i].classlist; for(let ii=0; ii < klass.length; ii++){ %>
+										<span class="spanclass"><%= klass[ii].classid.classname %></span>
+										<%}%>	
+						      </td>
+						      <td><%= tasklist[i].time %></td>
+						      <td><%= tasklist[i].endtime %></td>
+						      <td><%= tasklist[i].isfinished %></td>
+
+						      <%let lastime = new Date(tasklist[i].endtime).getTime() - new Date().getTime(); if(lastime > 0 ){%>
+						      <td><span class="green">进行中</span></td>
+						      <%}else{%>
+						      <td>已结束</td>
+						      <%}%>
+						      <td class="opt">
+						      	<a href="/school/task/detail/works/<%- tasklist[i]._id %>" class="check">查看</a>
+						      </td>
+						    </tr>
+						    <%}%>
+						  <%}%>
+						  </tbody>
+						</table>
+						<%if(!tasklist || tasklist.length == 0){%>
+							<div class="notable"><i class="icon iconfont icon-Null-data"></i> 您还没有布置过作业</div>
+						<%}%>
+					</div>
+					<div id="xu-pagination" class="pager row"></div>
+  			</div>
+  		</div>
+  	</div>
+  	<%include pub/foot.html%>
+  	<script type="text/javascript" src="/school/js/jqpaginator.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        var limittxt = 'page=';
+        var countnums = $('#pagecount').val();
+        var currentPage = parseInt($('#pageid').val());
+        if(countnums >  29 ){
+            var total = Math.ceil(countnums/30);
+            $.jqPaginator('#xu-pagination', {
+                totalPages: total,
+                visiblePages:5,
+                currentPage:currentPage,
+                page: '<li class="page"><a href="/school/task'+'?'+limittxt+'{{page}}">{{page}}</a></li>',
+            });
+        }
+    })
+    </script>
+  </body>
+</html>

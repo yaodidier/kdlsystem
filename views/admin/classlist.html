@@ -1,0 +1,43 @@
+<%include pub/admin_head.html%>
+    </head>
+    <body>
+        <!-- Page Container -->
+        <div class="page-container">
+            <%include pub/admin_nav.html%>
+            <!-- Page Content -->
+            <div class="page-content">
+                <div class="page-inner">
+                	<div class="page-title">
+                        <h3 class="breadcrumb-header">所有班级列表</h3>
+                    </div>
+                    <div id="main-wrapper">
+                        <div class="col-md-12">
+                            <table class="table" style="margin-top: 10px;">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>班级名称</th>
+                                        <th>班级人数</th>
+                                        <th>老师</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%for(let i=0; i< data.length;i++){%>
+                                    <tr>
+                                        <th scope="row"><%= i+1 %></th>
+                                        <td><%= data[i].classname %></td>
+                                        <td><%= data[i].total %></td>
+                                        <td><%= data[i].tchlist[0].teacherid.nickname %></td>
+                                    </tr>
+                                	<%}%>	
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascripts -->
+        <%include pub/admin_foot.html%>
+    </body>
+</html>

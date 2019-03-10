@@ -1,0 +1,39 @@
+<%include pub/head.html%>
+  </head>
+  <body>
+  	<%include pub/left-nav.html%>
+  	<div class="xu-main-bar">
+  		<%include pub/usernav.html%>
+  		<div class="xu-main-body">
+  			<input type="hidden" id="classupId" />
+  			<h3>我的项目</h3>
+  			<div class="main-panel">
+					<ul class="myjob-card-bar row">
+						<% for(let i=0;i < worksdata.length; i++){%>
+						<li>
+							<div class="xu-list-div">
+								<div class="xu-content-img">
+									<img src="/project/covers/<%- locals.user._id %>/<%- worksdata[i].covers%>"/>
+								</div>
+								<div class="xu-list-border">
+									<span class="xu-contant-title unr"><%- worksdata[i].title %></span>
+									<div class="xu-user-panel border-top unr">
+										<ul class="wm-control-ul">
+											<li><a href="javascript:;" class="delete-works-tch" wtype="unrel" wid="<%- worksdata[i]._id %>" wlocals="<%- worksdata[i].localsname %>" clocals="<%-worksdata[i].covers %>"><i class="icon iconfont icon-deletefill" ></i>删除</a></li>
+											<li><a href="/scratch#<%- worksdata[i].localsname %>.184"><i class="icon iconfont icon-writefill"></i>编辑</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						<%}%>
+					</ul>
+					<%if(worksdata.length == 0){%>
+					<div class="notable"><i class="icon iconfont icon-Null-data"></i> 暂无项目，<a href="/scratch" style="color: #2aa0fd">去创建</a></div>
+					<%}%>
+  			</div>
+  		</div>
+  	</div>
+  	<%include pub/foot.html%>
+  </body>
+</html>

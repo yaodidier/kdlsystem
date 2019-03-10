@@ -1,0 +1,49 @@
+<%include pub/head.html%>
+  </head>
+  <body>
+  	<%include pub/left-nav.html%>
+  	<div class="xu-main-bar">
+  		<%include pub/usernav.html%>
+  		<div class="xu-main-body">
+  			<input type="hidden" id="classupId" />
+  			<h3>进行中的作业</h3>
+  			<div class="main-panel-stu row">
+          <%for(let i = 0;i < tasklist.length; i++){%>
+  				<div class="task-item">
+  					<div class="task-title"><h4><%= tasklist[i].title %></h4>
+            <%if(tasklist[i].types == 'type1'){%>
+            <span class="task_type blue">课堂作业</span>
+            <%}else if(tasklist[i].types == 'type2'){%>
+            <span class="task_type yellow">家庭作业</span>
+            <%}else{%>
+            <span class="task_type green">假期作业</span>
+            <%}%>
+            </div>
+            <p>班级：
+            <% 
+            var a = locals.user.classlist;
+            var b = tasklist[i].classlist.toString();
+            var c = [];
+            for(let j = 0; j < a.length; j++){
+              if(b.indexOf(a[j].klassid.classname) !== -1){
+                c.push(a[j].klassid.classname)
+              }
+            }
+            %>
+            <%- c %>
+  					</p>
+  					<p>截止日期：<%= tasklist[i].endtime %></p>
+  					<div class="conterk-bar">
+  						<a href="/school/stutask/detail/<%- tasklist[i]._id %>" class="stu-btn">查看详情</a>
+  					</div>
+  				</div>
+          <%}%>
+          <%if(!tasklist || tasklist.length == 0){%>
+            <div class="notable"><i class="icon iconfont icon-Null-data"></i> 暂无数据</div>
+          <%}%>
+  			</div>
+  		</div>
+  	</div>
+  	<%include pub/foot.html%>
+  </body>
+</html>

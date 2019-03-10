@@ -1,0 +1,68 @@
+<div class="msgnotice" id="errNoticeModal">
+  <div class="notice-cont notice-cont-err"></div>
+</div>
+<div class="msgnotice" id="sugNoticeModal">
+  <div class="notice-cont notice-cont-sug"></div>
+</div>
+<div class="xu-loader">
+  <div class="loader-inner line-scale">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade modal-big" id="newClassStudent" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">添加学生</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="choose-stu-ul row">
+          <li id="addstuin">添加校内学生</li>
+          <li class="active">添加新学生</li>
+        </ul>
+        <div class="show-stu-div">
+          <div class="component-tree all-class-list">
+            <div id="thisclassname">当前班级: <span></span></div>
+            <ul id="classUl">
+            </ul>
+            <span id="noclass-stu">其他无班级的学生</span>
+          </div>
+          <div class="component-tree class-student-list long">
+            <p class="stu-list-msg">请点击左侧分组快速查找学生</p>
+            <ul id="stuUl">
+            </ul>
+          </div>
+          <p>提示：如果班级中已存在某位学生，系统会自动过滤，不添加该学生。</p>
+        </div>
+        <div class="show-stu-div active">
+        	<div class="title-msg">批量为学生创建新的帐号，学生凭此帐号登录后可直接加入班级</div>
+        	<div class="step-msg"><span>第1步</span>点击下方链接下载“添加学生的Excel模板”。</div>
+        	<div class="sek"><i class="icon iconfont icon-quan"></i> <a href="/excel/批量导入学生帐号模板.xls" target="_blank">添加学生Excel模版下载</a></div>
+        	<div class="step-msg"><span>第2步</span>将要添加的学生按要求录入Excel表格内，一键导入。</div>
+        	<div class="step-msg"><span>第3步</span>成功导入后，系统将自动生成并下载学生帐号密码表格。</div>
+        	<div class="sek"><span class="org">学生的帐号初始密码为：111222</span></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="show-stu-span">
+          <button type="button" class="xu-btn xu-btn-primary" id="addoldstu">添加</button>
+        </span>
+        <span class="show-stu-span active">
+  				<label class="xu-btn xu-btn-primary" for="upload">
+  					<input type="file" id="upload" class="dismiss" name="file" accept=".xls">
+  					一键导入
+  				</label>
+        </span>
+        <button type="button" class="btn btn-default" data-dismiss="modal">暂不添加</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/school/js/jquery.min.js"></script>
+<script type="text/javascript" src="/boot/bootstrap.min.js"></script>
+<script type="text/javascript" src="/school/js/app.js"></script>
