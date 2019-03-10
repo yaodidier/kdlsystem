@@ -847,7 +847,7 @@ button.close {
 }
 .reg-content .reg-l-bar .title{
   font-size: 23px;
-  color: #1E88E5;
+  color: #11EEC2;
   margin: 0;
   font-weight: normal;
   margin-bottom: 20px;
@@ -911,7 +911,7 @@ button.close {
   z-index: 9;
   border: 0;
   font-size: 30px;
-  font-weight: bold; 
+  font-weight: bold;
   cursor: pointer;
   outline: none;
 }
@@ -1077,7 +1077,7 @@ input[type="search"] {
 .user-modal .modal-title{
 	font-size: 20px;
 	font-weight: bold;
-	color: #03a9f4;
+	color: #09F7C7;
 	text-align: left;
 	padding-top: 6px;
 	padding-bottom: 0px;
@@ -1166,7 +1166,7 @@ input[type="search"] {
 	color: #333
 }
 .go-reg-p a{
-	color: #03a9f4
+	color: #09F7C7
 }
 .kj-login{
 	float: left;
@@ -1191,7 +1191,7 @@ input[type="search"] {
   border: 1px dashed #a7d3ff;
 }
 .kj-login a:hover{
-  border-color: #03a9f4;
+  border-color: #09F7C7;
   background: #f7f7f7
 }
 .btn-default{
@@ -1202,7 +1202,7 @@ input[type="search"] {
 	display: block;
 	width: 100%;
 	padding: 9px;
-	background: #03a9f4;
+	background: #09F7C7;
 	font-size: 15px;
 	color: #fff;
 	border-radius: 2px

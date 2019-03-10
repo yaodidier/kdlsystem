@@ -115,7 +115,7 @@ router.get('/lesson', function(req, res, next) {
   if(_admin){
     Lesson.find({}).exec(function(err, lessonlist){
       if(err){console.log(err)}
-      res.render('admin/lesson', { 
+      res.render('admin/lesson', {
         lessons:lessonlist,
         active:'lesson'
       });
@@ -128,7 +128,7 @@ router.get('/lesson', function(req, res, next) {
 router.get('/lesson/upload/new', function(req, res, next) {
   let _admin = req.session.admin;
   if(_admin){
-    res.render('admin/lesson_upload', { 
+    res.render('admin/lesson_upload', {
       lessons:[],
       active:'lesson'
     });
@@ -143,7 +143,7 @@ router.get('/lesson/upload/:id', function(req, res, next) {
     let vid = req.params.id;
     Lesson.find({_id:vid}).exec(function(err, backdata){
       if(backdata && backdata.length > 0){
-        res.render('admin/lesson_upload', { 
+        res.render('admin/lesson_upload', {
           lessons:backdata[0],
           active:'lesson'
         });
@@ -160,7 +160,7 @@ router.get('/tips/work', function(req, res, next) {
   let _admin = req.session.admin;
   if(_admin){
     Worktip.find({}).sort({'meta.createAt': -1}).exec(function(err, tips){
-      res.render('admin/tips_2', { 
+      res.render('admin/tips_2', {
         tips:tips,
         qf:'work',
         active:'tips'
@@ -175,7 +175,7 @@ router.get('/tips/user', function(req, res, next) {
   let _admin = req.session.admin;
   if(_admin){
     Usertip.find({}).sort({'meta.createAt': -1}).exec(function(err, tips){
-      res.render('admin/tips_2', { 
+      res.render('admin/tips_2', {
         tips:tips,
         qf:'user',
         active:'tips'
@@ -191,7 +191,7 @@ router.get('/tips/comment/user', function(req, res, next) {
   let _admin = req.session.admin;
   if(_admin){
     UCommentip.find({}).sort({'meta.createAt': -1}).populate('toid','_id content').exec(function(err, tips){
-      res.render('admin/tips', { 
+      res.render('admin/tips', {
         tips:tips,
         qf:'user',
         active:'tips'
@@ -206,7 +206,7 @@ router.get('/tips/comment/work', function(req, res, next) {
   let _admin = req.session.admin;
   if(_admin){
     WCommentip.find({}).sort({'meta.createAt': -1}).populate('toid','_id content').exec(function(err, tips){
-      res.render('admin/tips', { 
+      res.render('admin/tips', {
         tips:tips,
         qf:'work',
         active:'tips'
@@ -221,7 +221,7 @@ router.get('/tips/comment/lesson', function(req, res, next) {
   let _admin = req.session.admin;
   if(_admin){
     LCommentip.find({}).sort({'meta.createAt': -1}).populate('toid','_id content').exec(function(err, tips){
-      res.render('admin/tips', { 
+      res.render('admin/tips', {
         tips:tips,
         qf:'lesson',
         active:'tips'
@@ -235,7 +235,7 @@ router.get('/tips/comment/lesson', function(req, res, next) {
 router.get('/works', function(req, res, next) {
   let _admin = req.session.admin;
   if(_admin){
-    res.render('admin/works', { 
+    res.render('admin/works', {
       active:'works'
     });
   }else{
@@ -290,7 +290,7 @@ router.get('/stulist', function(req, res, next) {
   let _admin = req.session.admin;
   if(_admin){
     User.find({role:0}).sort({classlist:-1}).populate('tchlist.teacherid','nickname').populate('classlist.klassid','classname').exec(function(err, stualldata){
-      res.render('admin/stulist', { 
+      res.render('admin/stulist', {
         stulist: stualldata,
         active:'stulist'
       });
@@ -303,7 +303,7 @@ router.get('/stulist', function(req, res, next) {
 router.post('/teacher/register', function(req, res, next) {
   const userhash = crypto.createHash('sha1');
   const user_name = req.body.username;
-  const nick_name = '小幽老师';
+  const nick_name = '凯智学院老师';
   const user_pwd = req.body.userpwd;
   const classNum = req.body.classnum;
   const stuNum = req.body.stunum;
@@ -549,7 +549,7 @@ router.get('/logout', function(req, res, next) {
 // 使用硬盘存储模式设置存放接收到的文件的路径以及文件名
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'public/img/index/banner'); 
+      cb(null, 'public/img/index/banner');
     },
     filename: function (req, file, cb) {
     	cb(null, file.fieldname + '-' + guid())
@@ -599,7 +599,7 @@ router.post('/banner/uploads', upload.single('bannerimg'),function(req, res, nex
 		      })
 		    })
 		}
-		
+
 	}else{
 		res.send({
 			status:'fail'
@@ -609,7 +609,7 @@ router.post('/banner/uploads', upload.single('bannerimg'),function(req, res, nex
 // 轮播删除接口
 router.post('/banner/delete',function(req, res, next) {
 	let imgid = req.body.imgid;
-	
+
 	if(imgid){
 		Banner.remove({_id:imgid}).exec(function(err){
 	      if(err){console.log(err)}
@@ -640,7 +640,7 @@ router.post('/search/user',function(req, res, next) {
           userinfo:userinfo
         })
       }
-      
+
     })
   }else{
     res.send({
@@ -664,7 +664,7 @@ router.post('/search/nickname',function(req, res, next) {
           userinfo:userinfo
         })
       }
-      
+
     })
   }else{
     res.send({
@@ -794,7 +794,7 @@ router.post('/jiefenhao/user',function(req, res, next) {
 // 视频上传接口
 var videostorage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'public/img/videocover'); 
+      cb(null, 'public/img/videocover');
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + guid())
@@ -878,7 +878,7 @@ router.post('/change/pwd',function(req, res, next) {
   let oldpwd = req.body.oldpwd;
   let newpwd = req.body.newpwd;
   const hash_pwd = userhash.update('s1_admin').update(oldpwd).digest('hex');
-  
+
   if(userid && oldpwd && newpwd){
     Adminuser.fetchById(userid, function(err,usermsg){
       if(err){
@@ -944,7 +944,7 @@ router.post('/search/work',function(req, res, next) {
           works:works[0]
         })
       }
-      
+
     })
   }else{
     res.send({

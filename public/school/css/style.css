@@ -156,8 +156,8 @@ input::-webkit-input-placeholder {
 	float: left;
 	width: 220px;
 	min-height: 100vh;
-	background: url(/school/img/index/leftbg.jpg) no-repeat;
-	background-color: #194190;
+	background: url(/school/img/index/leftbg2.jpg) no-repeat;
+	background-color: #EE9611;
 	background-position: 0 50px;
 }
 .xu-sb-head{
@@ -826,7 +826,7 @@ input[type=checkbox], input[type=radio] {
   border-radius: 2px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  display: inline-block; 
+  display: inline-block;
 }
 .loader-inner{
   margin: auto;
@@ -962,7 +962,7 @@ input[type=checkbox], input[type=radio] {
   width: 310px;
 }
 .all-class-list li ,#noclass-stu{
-  display: block; 
+  display: block;
   border-left: 3px solid #ddd;
   background: #f6f6f6;
   padding: 10px 14px;
@@ -1128,7 +1128,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .xu-contant-title:hover {
-  color: #2d91e8
+  color: #1AE6BD
 }
 
 p.xu-contant-int {
@@ -1247,7 +1247,7 @@ p.xu-contant-int {
   cursor: pointer;
 }
 .wrok-card-modal.canchecked:hover{
-  border-color:#ccc 
+  border-color:#ccc
 }
 .wrok-card-modal.canchecked.checked,.wrok-card-modal.canchecked.checked:hover{
   border-color: #2196f3
@@ -1353,7 +1353,7 @@ p.xu-contant-int {
   max-width: 200px;
   overflow-x: auto;
   height: 50px;
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 span.tj-status{
   display: inline-block;
@@ -1369,7 +1369,7 @@ span.tj-status.end{
 }
 #work-modal-list,#stu-projects-list{
   max-height: 480px;
-  overflow-y:auto; 
+  overflow-y:auto;
 }
 .stuwork-select-bar{
   float: right;

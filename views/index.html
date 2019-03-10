@@ -39,14 +39,14 @@
                         </div>
     				</div>
     				<div class="gav-slider-right">
-    					<p class="welcome">欢迎来到<strong>小幽</strong>编程社区体验乐趣编程登上新的旅程。</p>
+    					<p class="welcome">欢迎来到<strong>凯智学院</strong>编程社区体验乐趣编程登上新的旅程。</p>
     					<%if(!locals.user){%>
     					<div class="user-icon"><img src="/img/index/person-icon.jpg" width="100%" height="100%"></div>
     					<a href="javascript:;" data-toggle="modal" data-target="#login" class="gav-link-btn">登录</a>
     					<% }else{ %>
     					<div class="user-icon"><a href="/users/userindex/<%- locals.user._id %>"><img src="<%- locals.user.headimg %>" width="100%" height="100%"></a></div>
-    					<a href="/users/userindex/<%- locals.user._id %>" class="gov-link-btn">我的项目</a>
-    					<a href="/users/userindex/<%- locals.user._id %>" class="gov-link-btn">我的主页</a>
+    					<!--<a href="/users/userindex/<%- locals.user._id %>" class="gov-link-btn">我的项目</a>-->
+    					<a href="/users/userindex/<%- locals.user._id %>" class="gov-link-btn">我的工作室</a>
     					<%}%>
     					<a href="/scratch" class="gav-link-btn">开始创作</a>
     				</div>
@@ -135,7 +135,7 @@
     			<%}%>
 	    	</ul>
 
-	    	
+
 
 	    	<div class="normal-title-bar row">
 	    		<h4 class="index-bar-title index-title-3" title="最新作品"></h4>

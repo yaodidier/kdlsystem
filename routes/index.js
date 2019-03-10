@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
       Works.find({}).sort({keep: -1}).limit(10).populate('user','headimg nickname').exec(function(err, keeplist){
         if(err){console.log(err)}
         Works.find({}).sort({'meta.createAt': -1}).limit(10).populate('user','headimg nickname').exec(function(err, newlist){
-          res.render('index', { 
+          res.render('index', {
             title: pagetitle,
             banners:banners,
             hotlist:hotlist,
@@ -44,7 +44,7 @@ router.get('/', function(req, res, next) {
       })
     })
   })
-  
+
 });
 //产品简介
 router.get('/ourjob', function(req, res, next) {
@@ -52,7 +52,7 @@ router.get('/ourjob', function(req, res, next) {
   if(_user){
     res.locals.user = _user
   }
-  res.render('support', { 
+  res.render('support', {
     title: pagetitle
   });
 });
@@ -142,8 +142,8 @@ router.post('/register', function(req, res, next) {
               let new_notice = new Notice({
                 user:data._id,
                 message:[{
-                  title:'欢迎来到小幽编程社区',
-                  content:'【欢迎来你到小幽编程社区】很高兴你能成为我们的一员，在这里你将体验不一样的编程乐趣，我们搭载了最新的 scratch3.0，赶紧去体验吧！',
+                  title:'欢迎来到凯智学院',
+                  content:'【欢迎来你到凯智学院】很高兴你能成为我们的一员，在这里你将体验不一样的编程乐趣，我们搭载了最新的 scratch3.0，赶紧去体验吧！',
                   createAt:moment(new Date()).format('LL')
                 }]
               });
@@ -159,7 +159,7 @@ router.post('/register', function(req, res, next) {
                   })
                 })
               })
-              
+
             }
           })
         }else{
@@ -218,7 +218,7 @@ router.get('/aboutus', function(req, res, next) {
   if(_user){
     res.locals.user = _user
   }
-  res.render('aboutus', { 
+  res.render('aboutus', {
     title: pagetitle
   });
 });
@@ -229,7 +229,7 @@ router.get('/suggest', function(req, res, next) {
   if(_user){
     res.locals.user = _user
   }
-  res.render('suggest', { 
+  res.render('suggest', {
     title: pagetitle
   });
 });
@@ -251,7 +251,7 @@ router.post('/user/suggest', function(req, res, next) {
       status:'fail'
     })
   }
-  
+
 });
 // 问题反馈
 router.get('/feedback', function(req, res, next) {
@@ -259,7 +259,7 @@ router.get('/feedback', function(req, res, next) {
   if(_user){
     res.locals.user = _user
   }
-  res.render('feedback', { 
+  res.render('feedback', {
     title: pagetitle
   });
 });
@@ -295,7 +295,7 @@ router.get('/searchstu', function(req, res, next) {
         if(err) console.log(err);
         Klass.findBytchid( _user._id, function(err,cbackmsg){
           if(err) console.log(err);
-          res.render('teacher/tch_search', { 
+          res.render('teacher/tch_search', {
             title: tpagetitle,
             stulist:sbackmsg,
             classlist:cbackmsg,
@@ -497,8 +497,8 @@ router.post('/student/add', save_file, function(req, res, next) {
               let new_notice = new Notice({
                 user:data._id,
                 message:[{
-                  title:'欢迎来到小幽编程社区',
-                  content:'【欢迎来你到小幽编程社区】很高兴你能成为我们的一员，在这里你将体验不一样的编程乐趣，我们搭载了最新的 scratch3.0，赶紧去体验吧！',
+                  title:'欢迎来到凯智学院',
+                  content:'【欢迎来你到凯智学院】很高兴你能成为我们的一员，在这里你将体验不一样的编程乐趣，我们搭载了最新的 scratch3.0，赶紧去体验吧！',
                   createAt:moment(new Date()).format('LL')
                 }]
               });
@@ -520,7 +520,7 @@ router.post('/student/add', save_file, function(req, res, next) {
               })
             })
           };
-          
+
         }else{
           res.send({
             status:'fail',
@@ -938,7 +938,7 @@ router.post('/join/otherclass', function(req, res, next) {
             msg:'已加入当前班级'
           })
         }
-        
+
       }else{
         res.send({
           status:'fail',
@@ -971,7 +971,7 @@ router.post('/find/workinfo', function(req, res, next) {
           msg:wdata[0]
         })
       }
-      
+
     })
   }else{
     res.send({
@@ -1001,7 +1001,7 @@ router.post('/works/pf/post', function(req, res, next) {
           msg:'评分成功'
         })
       }
-      
+
     })
   }else{
     res.send({

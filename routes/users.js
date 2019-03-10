@@ -37,7 +37,7 @@ router.get('/userindex/:id', function(req, res, next) {
             if(err){console.log(err)}
             Works.findByuser(userId, function(err, works_data){
               if(err){console.log(err)}
-              res.render('user_index', { 
+              res.render('user_index', {
                 title: usermsg[0].username + '的个人主页'+pagetitle,
                 userid:userId,
                 createtime: moment(usermsg[0].meta.createAt).format('LL'),
@@ -53,7 +53,7 @@ router.get('/userindex/:id', function(req, res, next) {
       }else{
         res.redirect('/')
       }
-      
+
     }
   })
 });
@@ -109,8 +109,8 @@ router.get('/usercomment/:id', function(req, res, next) {
             })
           })
         })
-      }  
-    }) 
+      }
+    })
   }else{
     res.redirect('/usercomment/'+userId+'?page=0')
   }
@@ -123,7 +123,7 @@ router.get('/usercenter', function(req, res, next) {
   if(_user){
     res.locals.user = _user
   }
-  res.render('user_center', { 
+  res.render('user_center', {
     title: '账号设置'+pagetitle,
   });
 });
@@ -178,7 +178,7 @@ router.get('/userzan/:id', function(req, res, next) {
         Ufollow.find({userid:userId}, function(err, ufoll_data){
         Works.find({zanlist: userId}).populate('user','headimg nickname').exec(function(err, wzan_data){
           if(err){console.log(err)}
-          res.render('user_zanjob', { 
+          res.render('user_zanjob', {
             title: usermsg[0].username + '的个人主页'+pagetitle,
             userid:userId,
             createtime: moment(usermsg[0].meta.createAt).format('LL'),
@@ -209,7 +209,7 @@ router.get('/userfollow/:id', function(req, res, next) {
         if(err){console.log(err)}
         Ufollow.find({userid:userId}).populate('follist.toid','headimg nickname').exec(function(err, ufollows){
           if(err){console.log(err)}
-          res.render('user_follow', { 
+          res.render('user_follow', {
             title: usermsg[0].username + '的个人主页'+pagetitle,
             userid:userId,
             createtime: moment(usermsg[0].meta.createAt).format('LL'),
@@ -226,7 +226,7 @@ router.get('/userfollow/:id', function(req, res, next) {
 });
 
 
-/* GET 我的卡搭 page. */
+/* GET 我的凯智学院 page. */
 router.get('/userworks/:type', function(req, res, next) {
   let _user = req.session.user;
   let _type = req.params.type;
@@ -235,8 +235,8 @@ router.get('/userworks/:type', function(req, res, next) {
     const userId = _user._id;
     if(_type == 'unreleased'){
       Unrel.find({user: userId}).exec(function(err, worksdata){
-        res.render('user_works', { 
-          title: '我的卡搭'+pagetitle,
+        res.render('user_works', {
+          title: '我的凯智学院'+pagetitle,
           typer: _type,
           worksdata: worksdata
         });
@@ -244,8 +244,8 @@ router.get('/userworks/:type', function(req, res, next) {
     }else if(_type == 'released'){
       Works.findByuser(userId, function(err, works_data){
         if(err){console.log(err)}
-        res.render('user_works', { 
-          title: '我的卡搭'+pagetitle,
+        res.render('user_works', {
+          title: '我的凯智学院'+pagetitle,
           typer: _type,
           worksdata: works_data
         });
@@ -256,7 +256,7 @@ router.get('/userworks/:type', function(req, res, next) {
   }else{
     res.redirect('/')
   }
-  
+
 });
 
 
@@ -302,7 +302,7 @@ router.post('/usercenter/change', function(req, res, next) {
       msg:'请重新登录'
     })
   }
-  
+
 });
 
 /* 评论. */
@@ -323,7 +323,7 @@ router.post('/ucomment', function(req, res, next) {
         msg:'评论失败'
     })
   }
-  
+
 });
 router.post('/ucomment/second', function(req, res, next) {
   const _comment = req.body;
@@ -350,7 +350,7 @@ router.post('/ucomment/second', function(req, res, next) {
       }
     })
   }
-  
+
 });
 
 
@@ -464,7 +464,7 @@ router.post('/ucomment/fzan', function(req, res, next) {
       status:'fail'
     })
   }
-  
+
 })
 router.post('/ucomment/szan', function(req, res, next) {
   const _zanId = req.body.fzanid;
@@ -690,7 +690,7 @@ router.post('/tip/comment/s', function(req, res, next) {
       status:'fail'
     })
   }
-  
+
 });
 router.post('/tip/wcomment/f', function(req, res, next) {
   const cid = req.body.cid;
@@ -754,7 +754,7 @@ router.post('/tip/wcomment/s', function(req, res, next) {
       status:'fail'
     })
   }
-  
+
 });
 
 //删除用户评论

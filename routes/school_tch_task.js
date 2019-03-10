@@ -5,8 +5,8 @@ const Task = require('../models/tch_task');
 const TchWorks = require('../models/tch_works');
 const User = require('../models/user');
 
-let tpagetitle = '小幽校园 - 教师校园工作台';
-let spagetitle = '小幽校园 - 学生校园创作室';
+let tpagetitle = '凯智学院校园 - 教师校园工作台';
+let spagetitle = '凯智学院校园 - 学生校园创作室';
 router.get('/', function(req, res, next) {
   let _user = req.session.user;
   let pagenum = req.query.page;
@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
         }
         Task.find({creater:_user._id}).skip(_pagenum).limit(30).sort({'meta.updateAt':-1}).populate('classlist.classid','classname').exec(function(err, data){
           if(err) console.log(err);
-          res.render('teacher/tch_task', { 
+          res.render('teacher/tch_task', {
           	title: tpagetitle,
             tasklist:data,
             pagecount:pagecount,
