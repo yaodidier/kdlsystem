@@ -108,7 +108,7 @@
 							<%}else{%>
 								<p>暂无操作说明</p>
 							<%}%>
-							
+
 						</div>
 						<div class="w-cot-msg w-l-tags">
 							<h4 class="title">标签</h4>
@@ -131,17 +131,17 @@
 							<a href="/works?page=1&type=g&sort=zan" target="_blank">故事</a>
 							<%}%>
 						</div>
-						<div class="do-this-job">
-							<%if(works && locals.user && works.user._id == locals.user._id){%>
-							<a href="/scratch#<%- works.worksid %>" class="check-job">查看积木</a>
-							<%}else{%>
-								<%if(works.isOnly !== true){%>
-								<a href="/scratch#<%- works.worksid %>" class="check-job">查看积木</a>
-								<%}else{%>
-								<a class="check-job only">查看积木</a>
-								<%}%>
-							<%}%>
-						</div>
+						<!--<div class="do-this-job">-->
+							<!--<%if(works && locals.user && works.user._id == locals.user._id){%>-->
+							<!--<a href="/scratch#<%- works.worksid %>" class="check-job">查看积木</a>-->
+							<!--<%}else{%>-->
+								<!--<%if(works.isOnly !== true){%>-->
+								<!--<a href="/scratch#<%- works.worksid %>" class="check-job">查看积木</a>-->
+								<!--<%}else{%>-->
+								<!--<a class="check-job only">查看积木</a>-->
+								<!--<%}%>-->
+							<!--<%}%>-->
+						<!--</div>-->
 					</div>
 				</div>
 				<div class="works-share-bar">
@@ -209,8 +209,8 @@
 	          <input type="hidden" value="<%= compageid%>" id="compageid">
 	          <div class="ot-common-words">
 	          <% if(locals.user){ %>
-	              <% let zan_user_id = locals.user._id; for(let i=0; i<wcomments.length; i++){ 
-	              let replyList = wcomments[i].reply, 
+	              <% let zan_user_id = locals.user._id; for(let i=0; i<wcomments.length; i++){
+	              let replyList = wcomments[i].reply,
 	                  zanNum = wcomments[i].zan,
 	                  zanList = wcomments[i].zanlist;
 	              let hadzan = zanList.indexOf(zan_user_id);
@@ -283,9 +283,9 @@
 	              	<i class="icon iconfont icon-discover"></i>暂无留言
 	              </div>
 	              <%}else{%>
-	                <% 
-	                for(let i=0; i<wcomments.length; i++){ 
-	                let replyList = wcomments[i].reply, 
+	                <%
+	                for(let i=0; i<wcomments.length; i++){
+	                let replyList = wcomments[i].reply,
 	                    zanNum = wcomments[i].zan,
 	                    zanList = wcomments[i].zanlist;
 	                %>
@@ -423,6 +423,6 @@
     	}
     </script>
     <script type="text/javascript" src="/scratches/player/compatibility.js"></script>
-    
+
   </body>
 </html>
