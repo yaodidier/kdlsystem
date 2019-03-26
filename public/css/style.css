@@ -286,10 +286,10 @@ body.bodybg{
 /* index */
 .xu-index-head{
   position: relative;
-  background: #11EEC2;
+  background: #3D676B;
 }
 .xu-index-head.bg2{
-  background:#1AE6BD
+  background:#3D676B
 }
 header{
   position: relative;
@@ -429,7 +429,7 @@ header{
   font-size: 15px;
 }
 .dropdown-menu> li.color-1 >a i{
-  color: #11EEC2;
+  color: #3D676B;
 }
 .dropdown-menu> li.color-2 >a i{
   color: #9c27b0;
@@ -457,7 +457,7 @@ header{
   width: 260px;
   height: 320px;
   border-radius: 6px;
-  background: #09F7C7 url(../img/index/slider-right-bg1.png) no-repeat right 0 bottom 30px;
+  background: #3D676B url(../img/index/slider-right-bg1.png) no-repeat right 0 bottom 30px;
   background-size:200px;
   box-shadow: 0px 6px 10px rgba(3,3,3,.12);
   overflow: hidden;
@@ -496,7 +496,7 @@ header{
 .gav-link-btn{
   display: block;
   background: #fff;
-  color: #09F7C7;
+  color: #3D676B;
   width: 200px;
   height: 34px;
   line-height: 34px;
@@ -512,7 +512,7 @@ header{
 .gov-link-btn{
   display: inline-block;
   background: #fff;
-  color: #09F7C7;
+  color: #3D676B;
   width: 96px;
   height: 34px;
   line-height: 34px;
@@ -629,7 +629,7 @@ header{
   padding-bottom: 0;
 }
 .xu-contant-title:hover{
-  color: #1AE6BD
+  color: #3D676B
 }
 p.xu-contant-int{
   font-size: 13px;
@@ -665,7 +665,7 @@ p.xu-contant-int{
   font-size: 13px;
 }
 .xu-user-panel.border-top a:hover{
-  color: #11EEC2
+  color: #3D676B
 }
 .index-match-bar li{
   float: left;
@@ -803,7 +803,7 @@ footer .linker-title{
 }
 .reg-content .reg-l-bar .title{
   font-size: 23px;
-  color: #11EEC2;
+  color: #3D676B;
   margin-bottom: 20px;
 }
 .user-modal .modal-body{
@@ -941,7 +941,7 @@ footer .linker-title{
   border-radius: 8px;
 }
 .kj-login a:hover{
-  border-color: #09F7C7;
+  border-color: #3D676B;
   background: #f7f7f7
 }
 .kj-login a img{
@@ -1010,7 +1010,7 @@ footer .linker-title{
   display: block;
   width: 100%;
   padding: 9px;
-  background: #09F7C7;
+  background: #3D676B;
   font-size: 16px;
   color: #fff;
   border-radius: 4px;
@@ -1345,7 +1345,7 @@ button.disabled, button[disabled]{
   margin-top: 10px;
 }
 .ot-send-btn.colorblue{
-  background: #1AE6BD;
+  background: #3D676B;
 }
 .writed .ot-send-btn{
   background: #ffc107
@@ -1386,7 +1386,7 @@ button.disabled, button[disabled]{
   margin-right: 2px;
 }
 .tosome-sp a:hover{
-  color: #11EEC2
+  color: #3D676B
 }
 .second-ot-comment{
   padding: 18px 0;
@@ -1412,7 +1412,7 @@ button.disabled, button[disabled]{
   color: #1eace5
 }
 .ot-item-content .ot-user-name a:hover{
-  color: #11EEC2
+  color: #3D676B
 }
 .ot-item-content .ot-user-name span{
   margin-left: 15px;
@@ -1478,7 +1478,7 @@ textarea.form-control{
 .person-center-panel .bar-title{
   display: inline-block;
   padding-bottom: 10px;
-  border-bottom: 1px solid #11EEC2
+  border-bottom: 1px solid #3D676B
 }
 .person-center-bar{
   border: 1px dashed #888;
@@ -1602,7 +1602,7 @@ span.f-user-zan.ac, span.f-user-zan.ac i, span.s-user-zan.ac, span.s-user-zan.ac
 }
 .nocomment-bar i{
   font-size: 30px;
-  color: #11EEC2;
+  color: #3D676B;
   margin-right: 10px;
 }
 a.chang_a_inname{
@@ -1616,7 +1616,7 @@ a.chang_a_inname{
 
 a.chang_a_inname:hover{
   background: #fff;
-  color: #11EEC2;
+  color: #3D676B;
   box-shadow: 2px 2px 4px rgba(0,0,0,.12)
 }
 .carousel-indicators{
@@ -1698,7 +1698,7 @@ a.chang_a_inname:hover{
 .works-cot-top .title{
   font-size: 18px;
   font-weight: bold;
-  border-left: 2px solid #11EEC2;
+  border-left: 2px solid #3D676B;
   padding-left: 10px;
   margin-bottom: 14px;
 }
@@ -1904,7 +1904,7 @@ a.chang_a_inname:hover{
 }
 
 .mw-left-bar ul li:hover a{
-  color: #11EEC2
+  color: #3D676B
 }
 .mw-all-bar{
   padding: 30px 15px;
@@ -2170,7 +2170,7 @@ a.sup-contant-us:hover{
   overflow: hidden;
   vertical-align: middle;
   margin: 0 0 -9px;
-  background: #11EEC2;
+  background: #3D676B;
 }
 .st0 {
   fill-rule: evenodd;
