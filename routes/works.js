@@ -5,7 +5,7 @@ var router = express.Router();
 const moment = require('moment');
 moment.locale('zh-CN');
 
-let pagetitle = ' - 编程社区 Scratch 3.0 少儿编程社区';
+let pagetitle = '凯智创客编程社区';
 
 function renderWorks(res, pagecount, pagenum, workslist,_sort,_type, _searchworks) {
   let sorturl;
@@ -62,13 +62,13 @@ router.get('/', function(req, res, next) {
             Works.find({title:{$regex:_searchworks}}).sort({zan:-1}).skip(_pagenum).limit(30).populate('user','headimg nickname').exec(function(err, workslist){
               if(err){console.log(err)}
                 console.log(workslist)
-              renderWorks(res, pagecount, pagenum, workslist, _sort, _type,_searchworks) 
+              renderWorks(res, pagecount, pagenum, workslist, _sort, _type,_searchworks)
             })
           }else{
             // 按 时间 排序 （全部）
             Works.find({title:{$regex:_searchworks}}).sort({'meta.createAt': -1}).skip(_pagenum).limit(30).populate('user','headimg nickname').exec(function(err, workslist){
               if(err){console.log(err)}
-              renderWorks(res, pagecount, pagenum, workslist, _sort, _type,_searchworks) 
+              renderWorks(res, pagecount, pagenum, workslist, _sort, _type,_searchworks)
             })
           }
 
@@ -77,13 +77,13 @@ router.get('/', function(req, res, next) {
             // 按 点赞 排序 （全部）
             Works.find({tags:_type, title:{$regex:_searchworks}}).sort({zan:-1}).skip(_pagenum).limit(30).populate('user','headimg nickname').exec(function(err, workslist){
               if(err){console.log(err)}
-              renderWorks(res, pagecount, pagenum, workslist, _sort, _type, _searchworks) 
+              renderWorks(res, pagecount, pagenum, workslist, _sort, _type, _searchworks)
             })
           }else{
             // 按 时间 排序 （全部）
             Works.find({tags:_type, title:{$regex:_searchworks}}).sort({'meta.createAt': -1}).skip(_pagenum).limit(30).populate('user','headimg nickname').exec(function(err, workslist){
               if(err){console.log(err)}
-              renderWorks(res, pagecount, pagenum, workslist, _sort, _type, _searchworks) 
+              renderWorks(res, pagecount, pagenum, workslist, _sort, _type, _searchworks)
             })
           }
         }
@@ -93,13 +93,13 @@ router.get('/', function(req, res, next) {
             // 按 点赞 排序 （全部）
             Works.find({}).sort({zan:-1}).skip(_pagenum).limit(30).populate('user','headimg nickname').exec(function(err, workslist){
               if(err){console.log(err)}
-              renderWorks(res, pagecount, pagenum, workslist, _sort, _type) 
+              renderWorks(res, pagecount, pagenum, workslist, _sort, _type)
             })
           }else{
             // 按 时间 排序 （全部）
             Works.find({}).sort({'meta.createAt': -1}).skip(_pagenum).limit(30).populate('user','headimg nickname').exec(function(err, workslist){
               if(err){console.log(err)}
-              renderWorks(res, pagecount, pagenum, workslist, _sort, _type) 
+              renderWorks(res, pagecount, pagenum, workslist, _sort, _type)
             })
           }
 
@@ -108,13 +108,13 @@ router.get('/', function(req, res, next) {
             // 按 点赞 排序 （全部）
             Works.find({tags:_type}).sort({zan:-1}).skip(_pagenum).limit(30).populate('user','headimg nickname').exec(function(err, workslist){
               if(err){console.log(err)}
-              renderWorks(res, pagecount, pagenum, workslist, _sort, _type) 
+              renderWorks(res, pagecount, pagenum, workslist, _sort, _type)
             })
           }else{
             // 按 时间 排序 （全部）
             Works.find({tags:_type}).sort({'meta.createAt': -1}).skip(_pagenum).limit(30).populate('user','headimg nickname').exec(function(err, workslist){
               if(err){console.log(err)}
-              renderWorks(res, pagecount, pagenum, workslist, _sort, _type) 
+              renderWorks(res, pagecount, pagenum, workslist, _sort, _type)
             })
           }
         }
@@ -179,7 +179,7 @@ router.get('/content/:page/:id', function(req, res, next) {
         }else{
           res.render('error')
         }
-      }) 
+      })
     }
   }else{
     res.redirect('/content/1/'+worksid)
@@ -287,7 +287,7 @@ router.post('/ucomment/second', function(req, res, next) {
       }
     })
   }
-  
+
 });
 
 
@@ -316,7 +316,7 @@ router.post('/ucomment/fzan', function(req, res, next) {
       status:'fail'
     })
   }
-  
+
 })
 router.post('/ucomment/szan', function(req, res, next) {
   const _zanId = req.body.fzanid;

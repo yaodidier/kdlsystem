@@ -19,7 +19,7 @@ const moment = require('moment');
 moment.locale('zh-CN');
 
 let govname = '编程社区';
-let pagetitle = '编程社区 - Scratch 3.0 少儿编程社区';
+let pagetitle = '凯智创客编程社区';
 let tpagetitle = '教师校园工作台';
 /* GET home page. */
 router.get('/', function(req, res, next) {
