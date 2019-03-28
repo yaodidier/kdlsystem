@@ -5,6 +5,7 @@ var taskSchema = new Schema({
 	types:String,
 	title:String,
 	content:String,
+	video:String,
 	creater:{type:ObjectId, ref:'User'},
 	classlist:[{
 		classid: {type:ObjectId, ref:'Klass'}

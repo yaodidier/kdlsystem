@@ -2,7 +2,7 @@
 	//全局
 	var xuLoader = $('.xu-loader');
 	var notable = $('.notable');
-	var userappId = $('#user-ske-1').val(); 
+	var userappId = $('#user-ske-1').val();
 	//方法
 	function xuLoaderHide(){
 		setTimeout(function(){
@@ -599,6 +599,7 @@
 		});
 		var tasktitle = $('#task-title');
 		var taskcontent = $('#task-content');
+		var taskvideo = $('#task-video');
 		var taskworkNum = $('#task-workNum');
 
 		var newTask = {
@@ -607,6 +608,7 @@
 			title:tasktitle.val(),
 			content: taskcontent.val(),
 			workNum: taskworkNum.val(),
+			video: taskvideo.val(),
 			endtime:endtime,
 			widlist:widlist,
 			classlist:classlist
@@ -625,7 +627,12 @@
 			errNoticeDiv(true, taskcontent, '*请填写作业要求');
 			errNoticeModal('请填写作业要求');
 			return;
-		}else if(!reg.test(newTask.workNum)){
+		}else if(!newTask.video){
+            taskvideo.addClass('is-invalid');
+            errNoticeDiv(true, taskvideo, '*请填写教学视频');
+            errNoticeModal('请填写教学视频');
+            return;
+        }else if(!reg.test(newTask.workNum)){
 			taskworkNum.addClass('is-invalid');
 			errNoticeDiv(true, taskworkNum, '*填写的作品数量有误');
 			errNoticeModal('填写的作品数量有误');
@@ -748,7 +755,7 @@
 				errNoticeModal('获取失败')
 			}
 		})
-		
+
 	})
 	$(document).on('click','#work-modal-list .wrok-card-modal.canchecked', function(){
 		$(this).toggleClass('checked')
@@ -770,7 +777,7 @@
 		$(this).remove()
 	});
 
-	//student 
+	//student
 	//加入其他班级
 	$('#jion-class-btn').click(function(){
 		let bjm = $('#banjm').val();
@@ -986,7 +993,7 @@
 								$('#myworkscore').text('优秀')
 							}
 						}
-						
+
 						$('#myworkpy').text(data.msg.py)
 						$('#myworkpyMoadl').modal('show');
 					}else{
@@ -1001,7 +1008,7 @@
 		}
 	});
 	//个人中心
-	function Zoom(obj, maxWidth, maxHeight){ 
+	function Zoom(obj, maxWidth, maxHeight){
 		var image = new Image();
 		image.src = obj;
 		var Width,Height;
@@ -1015,7 +1022,7 @@
             {
                 Width = maxWidth;
                 Height = maxWidth * (image.height / image.width);
-            } 
+            }
             else {
                 Width = maxHeight * (image.width / image.height);
                 Height = maxHeight;
@@ -1106,7 +1113,7 @@
 				}
 			})
 		}
-		
-		
+
+
 	})
 })(jQuery);
