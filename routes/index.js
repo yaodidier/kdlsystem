@@ -568,7 +568,7 @@ router.post('/student/reset/pwd', function(req, res, next) {
   let _user = req.session.user;
   if(_user && _user.role == 9){
     const uid = req.body.uid;
-    const repwd = '4400c84d239d80c2919933c61749e2eaf9d615d5';
+    const repwd = '62d7d256d26e3cbaebb29e12516b615fdaec2023';
     User.updatepwd(uid, repwd, function(err, backmsg){
       if(err){
         console.log(err);
