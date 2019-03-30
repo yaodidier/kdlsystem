@@ -466,7 +466,6 @@ router.post('/student/add', save_file, function(req, res, next) {
           const sheetNames = workbook.SheetNames;
           const worksheet = workbook.Sheets[sheetNames[0]];
           const stulist = XLSX.utils.sheet_to_json(worksheet);
-          const code = nodeUuid.v1().split('-',1).toString();
           const time = moment(new Date()).format("YYYY-MM-DD HH:mm");
           let stulength = stulist.length;
           let stuTotal = stuLast + 8;
@@ -475,7 +474,7 @@ router.post('/student/add', save_file, function(req, res, next) {
           }
           for(let i = 8 ;i < stulength; i++){
             let stumsg = new User({
-              username:code + i,
+              username:nodeUuid.v1().split('-',1).toString() + i,
               password:hashpwd('111222'),
               nickname:stulist[i].student,
               realname:stulist[i].student,
